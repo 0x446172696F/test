@@ -1,0 +1,11 @@
+$dr = "C:\temp\PoC-Exfil"
+if (!(test-path $dr)){
+if (Test-Path "c:\temp"){New-Item -ItemType directory -path "c:\temp" -name "PoC-Exfil"}else{new-item -ItemType directory -path "c:\" -name "temp\PoC-Exfil"}}
+$ipc = Get-NetIPConfiguration -all
+$div = "-------------------------------"
+echo "IP: " $ipc | out-file $dr\test.txt -Append
+echo $div | out-file $dr\test.txt -Append echo
+"user: " $env:Username | out-file $dr\test.txt -Append
+echo $div | out-file $dr\test.txt -Append
+echo "hostname: " $env:Computername |Out-File $dr\test.txt -Append
+echo $div | out-file $dr\test.txt -Append 
